@@ -344,13 +344,6 @@ GPL-2.0 License - OBS Studioのライセンスに準拠
 
 ---
 
-## サポート
-
-- **問題**: [GitHub Issues](https://github.com/ikenainanodesu/obs-sei-stamper/issues)
-- **ディスカッション**: [GitHub Discussions](https://github.com/ikenainanodesu/obs-sei-stamper/discussions)
-- **ドキュメント**: [Wiki](https://github.com/ikenainanodesu/obs-sei-stamper/wiki)
-
----
 
 ## リリースノート
 

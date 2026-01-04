@@ -343,13 +343,6 @@ GPL-2.0 License - 遵循 OBS Studio 许可
 
 ---
 
-## 支持
-
-- **问题反馈**：[GitHub Issues](https://github.com/ikenainanodesu/obs-sei-stamper/issues)
-- **讨论**：[GitHub Discussions](https://github.com/ikenainanodesu/obs-sei-stamper/discussions)
-- **文档**：[Wiki](https://github.com/ikenainanodesu/obs-sei-stamper/wiki)
-
----
 
 ## 版本更新记录
 

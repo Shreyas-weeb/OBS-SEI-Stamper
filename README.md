@@ -326,27 +326,6 @@ If you prefer manual control over the build process:
 
 ---
 
-## License
-
-GPL-2.0 License - following OBS Studio licensing
-
----
-
-## Credits
-
-- **OBS Studio**: https://obsproject.com
-- **libsrt**: https://github.com/Haivision/srt
-- **FFmpeg**: https://ffmpeg.org
-- **NTP Protocol**: RFC 5905
-
----
-
-## Support
-
-- **Issues**: [GitHub Issues](https://github.com/ikenainanodesu/obs-sei-stamper/issues)
-- **Documentation**: [Wiki](https://github.com/ikenainanodesu/obs-sei-stamper/wiki)
-
----
 
 ## Contributing
 
@@ -375,14 +354,6 @@ See [LICENSE](LICENSE) file for details.
 - **libsrt**: https://github.com/Haivision/srt
 - **FFmpeg**: https://ffmpeg.org
 - **NTP Protocol**: RFC 5905
-
----
-
-## Support
-
-- **Issues**: [GitHub Issues](https://github.com/ikenainanodesu/obs-sei-stamper/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/ikenainanodesu/obs-sei-stamper/discussions)
-- **Documentation**: [Wiki](https://github.com/ikenainanodesu/obs-sei-stamper/wiki)
 
 ---
 
