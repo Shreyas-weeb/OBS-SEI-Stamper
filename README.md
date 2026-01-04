@@ -17,7 +17,8 @@ OBS SEI Stamper is an OBS Studio plugin that enables **frame-level video synchro
 
 **Key Features:**
 - 🎯 **Frame-accurate synchronization** using NTP timestamps
-- 📡 **Intel QuickSync H.264 encoder**: Hardware-accelerated encoding with SEI support
+- 📡 **Multiple hardware encoders**: Intel QuickSync, NVIDIA NVENC, AMD AMF
+- 🚀 **GPU acceleration**: Hardware-accelerated H.264 encoding with SEI support
 - 🔄 **Sender & Receiver**: Complete solution for encoding and decoding
 - 🌐 **SRT streaming**: Built-in SRT receiver for low-latency streaming
 - ⏱️ **Microsecond precision**: NTP-based timing for professional applications
@@ -86,8 +87,10 @@ The release package includes:
 ### Sender (Encoder)
 
 1. Open **Settings → Output → Output Mode: Advanced**
-2. Select the SEI Stamper encoder:
-   - **SEI Stamper (H.264 QuickSync)**
+2. Select a SEI Stamper encoder:
+   - **SEI Stamper (Intel QuickSync)** - For Intel integrated/Arc GPUs
+   - **SEI Stamper (NVIDIA NVENC)** - For NVIDIA GPUs
+   - **SEI Stamper (AMD AMF)** - For AMD GPUs
 3. Configure encoder properties:
    - **NTP Server**: `time.windows.com` (or your preferred NTP server)
    - **NTP Port**: `123` (default)
@@ -159,11 +162,13 @@ MediaInfo --Full output.mp4 | Select-String "SEI"
   - PTS (8 bytes)
   - NTP Timestamp (8 bytes: 4 bytes seconds + 4 bytes fraction)
 
-### Supported Encoder
+### Supported Encoders
 
-| Encoder | SEI NAL Type | Hardware Acceleration | Status |
-|---------|--------------|----------------------|--------|
-| H.264   | Type 6       | Intel QuickSync      | ✅     |
+| Encoder | Hardware | SEI NAL Type | Min. Version | Status |
+|---------|----------|--------------|--------------|--------|
+| SEI Stamper (Intel QuickSync) | Intel iGPU/Arc | Type 6 | v1.0.0 | ✅ |
+| SEI Stamper (NVIDIA NVENC) | NVIDIA GPU | Type 6 | v1.1.0 | ✅ |
+| SEI Stamper (AMD AMF) | AMD GPU | Type 6 | v1.1.0 | ✅ |
 
 ---
 
@@ -327,6 +332,38 @@ See [LICENSE](LICENSE) file for details.
 
 ---
 
-**Version**: 1.0.0  
+## Release Notes
+
+### v1.1.0 (2026-01-04)
+
+**🎉 New Features:**
+- ✨ **NVIDIA NVENC Support**: Added hardware-accelerated H.264 encoding for NVIDIA GPUs
+- ✨ **AMD AMF Support**: Added hardware-accelerated H.264 encoding for AMD GPUs
+- 🚀 **Multi-GPU Support**: Users can now choose from Intel QuickSync, NVIDIA NVENC, or AMD AMF encoders
+
+**Technical Details:**
+- New encoder IDs: `h264_nvenc_native`, `h264_amf_native`
+- Both new encoders support SEI timestamp insertion and NTP synchronization
+- Uses FFmpeg backend for NVENC and AMD encoding
+- All encoders share the same SEI UUID for compatibility
+
+**Compatibility:**
+- Requires compatible GPU hardware
+- FFmpeg with NVENC/AMF support (included in release builds)
+- Backward compatible with v1.0.0 streams
+
+---
+
+### v1.0.0 (2026-01-04)
+
+**Initial Release:**
+- Frame-level video synchronization using NTP timestamps
+- Intel QuickSync H.264 encoder with SEI support
+- SRT receiver with SEI extraction
+- NTP client for time synchronization
+
+---
+
+**Current Version**: 1.1.0  
 **Last Updated**: 2026-01-04
 

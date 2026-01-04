@@ -53,6 +53,18 @@ bool obs_module_load(void) {
        "[SEI Stamper] Registered Intel QuickSync (VPL Native) encoder");
 #endif
 
+#ifdef ENABLE_NVENC
+  extern struct obs_encoder_info nvenc_encoder_info;
+  obs_register_encoder(&nvenc_encoder_info);
+  blog(LOG_INFO, "[SEI Stamper] Registered NVIDIA NVENC encoder");
+#endif
+
+#ifdef ENABLE_AMD
+  extern struct obs_encoder_info amd_encoder_info;
+  obs_register_encoder(&amd_encoder_info);
+  blog(LOG_INFO, "[SEI Stamper] Registered AMD AMF encoder");
+#endif
+
   obs_register_encoder(&sei_stamper_h265_encoder_info);
   blog(LOG_INFO, "[SEI Stamper] Registered H.265/HEVC encoder");
 

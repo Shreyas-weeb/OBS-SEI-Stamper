@@ -17,7 +17,8 @@ OBS SEI Stamperは、SEI（補足拡張情報）を使用してビデオスト�
 
 **主な機能：**
 - 🎯 **フレーム精度の同期** - NTPタイムスタンプを使用
-- 📡 **Intel QuickSync H.264エンコーダ** - SEI対応のハードウェアアクセラレーションエンコード
+- 📡 **複数のハードウェアエンコーダ** - Intel QuickSync、NVIDIA NVENC、AMD AMF
+- 🚀 **GPUアクセラレーション** - SEI対応のハードウェアアクセラレーションH.264エンコード
 - 🔄 **送信機と受信機** - エンコードとデコードの完全なソリューション
 - 🌐 **SRTストリーミング** - 低遅延ストリーミング用のSRT受信機を内蔵
 - ⏱️ **マイクロ秒精度** - プロフェッショナルアプリケーション向けのNTPベースタイミング
@@ -87,7 +88,9 @@ OBS SEI Stamperは、SEI（補足拡張情報）を使用してビデオスト�
 
 1. **設定 → 出力 → 出力モード：詳細**を開く
 2. SEI Stamperエンコーダを選択：
-   - **SEI Stamper (H.264 QuickSync)**
+   - **SEI Stamper (Intel QuickSync)** - Intel統合/Arc GPU用
+   - **SEI Stamper (NVIDIA NVENC)** - NVIDIA GPU用
+   - **SEI Stamper (AMD AMF)** - AMD GPU用
 3. エンコーダプロパティを設定：
    - **NTPサーバー**: `time.windows.com`（または任意のNTPサーバー）
    - **NTPポート**: `123`（デフォルト）
@@ -161,9 +164,11 @@ MediaInfo --Full output.mp4 | Select-String "SEI"
 
 ### サポートされているエンコーダ
 
-| エンコーダ | SEI NALタイプ | ハードウェアアクセラレーション | ステータス |
-|-----------|--------------|----------------------------|-----------|
-| H.264     | Type 6       | Intel QuickSync            | ✅        |
+| エンコーダ | ハードウェア | SEI NALタイプ | 最小バージョン | ステータス |
+|-----------|------------|--------------|---------------|----------|
+| SEI Stamper (Intel QuickSync) | Intel iGPU/Arc | Type 6 | v1.0.0 | ✅ |
+| SEI Stamper (NVIDIA NVENC) | NVIDIA GPU | Type 6 | v1.1.0 | ✅ |
+| SEI Stamper (AMD AMF) | AMD GPU | Type 6 | v1.1.0 | ✅ |
 
 ---
 
@@ -304,5 +309,37 @@ GPL-2.0 License - OBS Studioのライセンスに準拠
 
 ---
 
-**バージョン**: 1.0.0  
+## リリースノート
+
+### v1.1.0 (2026-01-04)
+
+**🎉 新機能:**
+- ✨ **NVIDIA NVENCサポート**: NVIDIA GPU向けハードウェアアクセラレーションH.264エンコードを追加
+- ✨ **AMD AMFサポート**: AMD GPU向けハードウェアアクセラレーションH.264エンコードを追加
+- 🚀 **マルチGPUサポート**: Intel QuickSync、NVIDIA NVENC、AMD AMFエンコーダから選択可能
+
+**技術詳細:**
+- 新しいエンコーダID: `h264_nvenc_native`, `h264_amf_native`
+- 両方の新しいエンコーダはSEIタイムスタンプ挿入とNTP同期をサポート
+- NVENCとAMDエンコードにFFmpegバックエンドを使用
+- 全てのエンコーダが互換性のため同じSEI UUIDを共有
+
+**互換性:**
+- 対応するGPUハードウェアが必要
+- NVENC/AMFサポート付きFFmpeg（リリースビルドに含まれる）
+- v1.0.0ストリームと後方互換性あり
+
+---
+
+### v1.0.0 (2026-01-04)
+
+**初回リリース:**
+- NTPタイムスタンプを使用したフレームレベルビデオ同期
+- SEI対応Intel QuickSync H.264エンコーダ
+- SEI抽出機能付きSRT受信機
+- 時刻同期用NTPクライアント
+
+---
+
+**現在のバージョン**: 1.1.0  
 **最終更新**: 2026-01-04

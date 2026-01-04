@@ -16,7 +16,8 @@ OBS SEI Stamper 是一个 OBS Studio 插件，通过在视频流中嵌入 NTP �
 
 **主要特性：**
 - 🎯 **帧精确同步** - 使用 NTP 时间戳
-- 📡 **Intel QuickSync H.264 编码器** - 支持 SEI 的硬件加速编码
+- 📡 **多种硬件编码器** - Intel QuickSync、NVIDIA NVENC、AMD AMF
+- 🚀 **GPU 加速** - 支持 SEI 的硬件加速 H.264 编码
 - 🔄 **完整方案** - 包含发送端和接收端
 - 🌐 **SRT 流媒体** - 内置 SRT 接收器,低延迟传输
 - ⏱️ **微秒精度** - 基于 NTP 的专业级时间同步
@@ -86,7 +87,9 @@ OBS SEI Stamper 是一个 OBS Studio 插件，通过在视频流中嵌入 NTP �
 
 1. 打开 **设置 → 输出 → 输出模式：高级**
 2. 选择 SEI Stamper 编码器：
-   - **SEI Stamper (H.264 QuickSync)**
+   - **SEI Stamper (Intel QuickSync)** - 适用于 Intel 集成/Arc GPU
+   - **SEI Stamper (NVIDIA NVENC)** - 适用于 NVIDIA GPU
+   - **SEI Stamper (AMD AMF)** - 适用于 AMD GPU
 3. 配置编码器属性：
    - **NTP 服务器**：`time.windows.com`（或您的 NTP 服务器）
    - **NTP 端口**：`123`（默认）
@@ -160,9 +163,11 @@ MediaInfo --Full output.mp4 | Select-String "SEI"
 
 ### 支持的编码器
 
-| 编码器 | SEI NAL 类型 | 硬件加速 | 状态 |
-|--------|-------------|---------|------|
-| H.264  | Type 6      | Intel QuickSync | ✅   |
+| 编码器 | 硬件 | SEI NAL 类型 | 最低版本 | 状态 |
+|--------|------|------------|----------|------|
+| SEI Stamper (Intel QuickSync) | Intel iGPU/Arc | Type 6 | v1.0.0 | ✅ |
+| SEI Stamper (NVIDIA NVENC) | NVIDIA GPU | Type 6 | v1.1.0 | ✅ |
+| SEI Stamper (AMD AMF) | AMD GPU | Type 6 | v1.1.0 | ✅ |
 
 ---
 
@@ -303,5 +308,37 @@ GPL-2.0 License - 遵循 OBS Studio 许可
 
 ---
 
-**版本**：1.0.0  
+## 版本更新记录
+
+### v1.1.0 (2026-01-04)
+
+**🎉 新增功能：**
+- ✨ **NVIDIA NVENC 支持**: 为 NVIDIA GPU 添加硬件加速 H.264 编码
+- ✨ **AMD AMF 支持**: 为 AMD GPU 添加硬件加速 H.264 编码
+- 🚀 **多 GPU 支持**: 用户现可从 Intel QuickSync、NVIDIA NVENC 或 AMD AMF 编码器中选择
+
+**技术细节：**
+- 新的编码器 ID：`h264_nvenc_native`, `h264_amf_native`
+- 两个新编码器均支持 SEI 时间戳插入和 NTP 同步
+- 使用 FFmpeg 后端进行 NVENC 和 AMD 编码
+- 所有编码器共享相同的 SEI UUID 以保证兼容性
+
+**兼容性：**
+- 需要兼容的 GPU 硬件
+- 支持 NVENC/AMF 的 FFmpeg（包含在发布版本中）
+- 与 v1.0.0 流媒体后向兼容
+
+---
+
+### v1.0.0 (2026-01-04)
+
+**首次发布：**
+- 使用 NTP 时间戳的帧级别视频同步
+- 支持 SEI 的 Intel QuickSync H.264 编码器
+- 带 SEI 提取功能的 SRT 接收器
+- 用于时间同步的 NTP 客户端
+
+---
+
+**当前版本**：1.1.0  
 **最后更新**：2026-01-04

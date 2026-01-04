@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(obs-sei-stamper VERSION 1.0.0)
+project(obs-sei-stamper VERSION 1.1.0)
 
 # 设置C/C++标准
 set(CMAKE_C_STANDARD 11)
@@ -43,6 +43,8 @@ set(PLUGIN_SOURCES
     src/sei-handler.c
     src/sei-stamper-encoder.c
     src/qsv-encoder.c          # Intel VPL Encoder
+    src/nvenc-encoder.c        # NVIDIA NVENC Encoder
+    src/amd-encoder.c          # AMD AMF Encoder
     src/sei-receiver-source.c  # 重新启用
 )
 
@@ -153,6 +155,12 @@ if(EXISTS "${VPL_LIBRARY}")
 else()
     message(WARNING "VPL library not found, Intel QuickSync (Native) will be disabled")
 endif()
+
+# 启用 NVENC 和 AMD 编码器 (通过 FFmpeg，无需额外库)
+add_definitions(-DENABLE_NVENC)
+add_definitions(-DENABLE_AMD)
+message(STATUS "Enabled NVENC and AMD encoders (via FFmpeg)")
+
 
 # 如果找到SRT库，才链接
 if(SRT_LIBRARY)
